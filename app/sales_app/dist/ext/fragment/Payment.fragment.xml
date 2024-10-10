@@ -1,0 +1,68 @@
+<mvc:View
+		controllerName="sap.suite.ui.commons.sample.Timeline.Timeline"
+		xmlns="sap.suite.ui.commons"
+		xmlns:core="sap.ui.core"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:m="sap.m"
+		height="100%">
+	<m:OverflowToolbar id="idToolbar">
+		<m:content>
+			<m:Label id="_IDGenLabel" text="Text Height"></m:Label>
+			<m:Select id="idGenderSelector" change="textHeightChanged">
+				<core:Item id="_IDGenItem" key="None" text="None"/>
+				<core:Item id="_IDGenItem2" key="3" text="3 Lines"/>
+				<core:Item id="_IDGenItem3" key="7" text="7 Lines"/>
+				<core:Item id="_IDGenItem4" key="150px" text="150 px"/>
+			</m:Select>
+			<m:Label id="_IDGenLabel1" text="Group By Type"></m:Label>
+			<m:Select id="_IDGenSelect" change="groupByChanged">
+				<core:Item id="_IDGenItem5" key="None" text="None"/>
+				<core:Item id="_IDGenItem6" key="Year" text="Year"/>
+				<core:Item id="_IDGenItem7" key="Month" text="Month"/>
+				<core:Item id="_IDGenItem8" key="Week" text="Week"/>
+				<core:Item id="_IDGenItem9" key="Day" text="Day"/>
+			</m:Select>
+			<m:Label id="_IDGenLabel2" text="Axis orientation"></m:Label>
+			<m:Select id="_IDGenSelect1" change="orientationChanged">
+				<core:Item id="_IDGenItem10" key="Vertical" text="Vertical"/>
+				<core:Item id="_IDGenItem11" key="Horizontal" text="Horizontal"/>
+			</m:Select>
+			<m:Label id="_IDGenLabel3" text="Alignment"></m:Label>
+			<m:Select id="idAlignment" change="alignmentChanged">
+				<core:Item id="_IDGenItem12" key="DoubleSided" text="Double sided"/>
+				<core:Item id="idAlignmentFirst" key="Left" text="Left"/>
+				<core:Item id="idAlignmentSecond" key="Right" text="Right"/>
+			</m:Select>
+			<m:CheckBox id="_IDGenCheckBox" select="enableScrollSelected" text="enable scrollbar" selected="true"/>
+			<m:Select id="_IDGenSelect2" change="dataChanged">
+				<core:Item id="_IDGenItem13" key="A" text="Type A"/>
+				<core:Item id="_IDGenItem14" key="B" text="Type B"/>
+				<core:Item id="_IDGenItem15" key="C" text="Type C"/>
+			</m:Select>
+		</m:content>
+	</m:OverflowToolbar>
+	<Timeline
+			id="idTimeline"
+			enableDoubleSided="true"
+			groupBy="HireDate"
+			growingThreshold="0"
+			filterTitle="Job Title"
+			sortOldestFirst="true"
+			content="{/Employees}">
+		<content>
+			<TimelineItem
+					id="idTemplateItem"
+					dateTime="{HireDate}"
+					title="{JobTitle}"
+					userNameClickable="true"
+					userNameClicked="onUserNameClick"
+					select="onPressItems"
+					userPicture="{Photo}"
+					text="{JobResponsibilities}"
+					userName="{Name}"
+					filterValue="{JobTitle}"
+					icon="{Icon}">
+			</TimelineItem>
+		</content>
+	</Timeline>
+</mvc:View>
